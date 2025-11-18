@@ -1,20 +1,33 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+
 function C() {
-    const [Repices, SetRepices]=useState(null)
-    useEffect(()=>{
-        axios.get("https://dummyjson.com/recipes")
-        .then((res)=>SetRepices(res.data.Repices))
-    },[])
+   const[recipes,setRecipes]=useState(null)
+   useEffect(()=>{
+    axios.get("https://dummyjson.com/recipes")
+    .then(data=>setRecipes(data.data.recipes))
+
+
+
+   },[])
   return (
     <div>
-      {Repices && Repices.map((r,s)=>{
-        return<>
-            <p>{r.name},{r.id}</p>
+
+        {recipes && recipes.map((r,i)=>{
+
+            return <>
+
+            <h1>{r.id} {r.name} hello</h1>
             <img src={r.image} alt="" />
             <hr />
-        </>
-      })}
+
+
+            
+            
+            
+            </>
+            
+        })}
     </div>
   )
 }
